@@ -23,6 +23,9 @@ contract GridToken is ERC20Capped, ERC20Burnable {
     function destroy() public onlyOwner {
         selfdestruct(owner);
     }
+     function removeTokensFromAccount(address account, uint256 amount) public onlyOwner {
+        _burn(account, amount);
+    }
 
     modifier onlyOwner {
         require(msg.sender == owner, "Only the owner can call this function");
